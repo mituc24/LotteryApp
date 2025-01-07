@@ -27,8 +27,11 @@ namespace LotteryApp
         private CancellationTokenSource cts1 = new CancellationTokenSource();
         private CancellationTokenSource cts2 = new CancellationTokenSource();
         private CancellationTokenSource cts3 = new CancellationTokenSource();
-
+        
         private AppWindow _appWindow;
+        private int startNumber = 0;
+        private int endNumber = 500;
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -37,21 +40,24 @@ namespace LotteryApp
 
         private async void SpinButton_Click(object sender, RoutedEventArgs e)
         {
+            int randomNum = random.Next(startNumber, endNumber+1);
+            string numString = randomNum.ToString().PadLeft(3, '0');
+
             // Check if any column is spinning and stop them in sequence
             if (!cts1.Token.IsCancellationRequested)
             {
                 cts1.Cancel();
-                await SlowDownColumn(Column1);
+                await SlowDownColumn(Column1, ""+numString[0]);
             }
             else if (!cts2.Token.IsCancellationRequested)
             {
                 cts2.Cancel();
-                await SlowDownColumn(Column2);
+                await SlowDownColumn(Column2, "" + numString[1]);
             }
             else if (!cts3.Token.IsCancellationRequested)
             {
                 cts3.Cancel();
-                await SlowDownColumn(Column3);
+                await SlowDownColumn(Column3, "" + numString[2]);
             }
             else
             {
@@ -78,7 +84,7 @@ namespace LotteryApp
             }
         }
 
-        private async Task SlowDownColumn(TextBlock column)
+        private async Task SlowDownColumn(TextBlock column, string num)
         {
             int duration = 2000; // Duration for the slowdown in milliseconds
             int elapsed = 0;
@@ -90,12 +96,13 @@ namespace LotteryApp
                 double progress = (double)elapsed / duration;
                 double sineValue = Math.Sin(progress * Math.PI / 2); // Sine function for smooth deceleration
                 int interval = (int)(startInterval + (endInterval - startInterval) * sineValue);
-
+                
                 column.Text = random.Next(0, 10).ToString();
                 await Task.Delay(interval);
 
                 elapsed += interval;
             }
+            column.Text = num;
         }
 
         private void OpenSettings_Click(object sender, RoutedEventArgs e) {
@@ -131,6 +138,19 @@ namespace LotteryApp
             Column1.Foreground = colorBrush;
             Column2.Foreground = colorBrush;
             Column3.Foreground = colorBrush;
+        }
+
+        public void ChangeFontSize(int fontSize)
+        {
+            Column1.FontSize = fontSize;
+            Column2.FontSize = fontSize;
+            Column3.FontSize = fontSize;
+        }
+
+        public void ChangeRange(int start, int end)
+        {
+            startNumber = start;
+            endNumber = end;
         }
 
         private AppWindow GetAppWindowForCurrentWindow()
