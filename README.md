@@ -1,7 +1,6 @@
 # Hướng dẫn sử dụng
 
 ©️ Bản quyền thuộc về Đoàn khoa - Liên chi hội CNTT trường Đại học Khoa học tự nhiên, ĐHQG-HCM. 
-Nếu bạn muốn sử dụng, vui lòng liên hệ qua email: nguyenminhtruc12a3@gmail.com.
 
 ## Ứng dụng được viết trên nền WinUI 3
 
