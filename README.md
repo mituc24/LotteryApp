@@ -1,6 +1,7 @@
 # Hướng dẫn sử dụng
 
-©️ Bản quyền thuộc về Đoàn khoa - Liên chi hội CNTT trường Đại học Khoa học tự nhiên, ĐHQG-HCM.
+©️ Bản quyền thuộc về Đoàn khoa - Liên chi hội CNTT trường Đại học Khoa học tự nhiên, ĐHQG-HCM. 
+Nếu bạn muốn sử dụng, vui lòng liên hệ qua email: nguyenminhtruc12a3@gmail.com.
 
 ## Ứng dụng được viết trên nền WinUI 3
 
@@ -30,10 +31,13 @@ Nếu các cài đặt đã đúng, bấm vào nút **Start** ba lần để ch�
 
 Vào thư mục **Assets**, thay đổi file **background.png** thành ảnh của bạn.
 
-
 ### Lưu ý quan trọng
 
 - Đảm bảo máy tính của bạn đã cài đặt đầy đủ các phần bổ trợ của Visual Studio liên quan đến WinUI 3 trước khi chạy ứng dụng.
 - Luôn kiểm tra và cập nhật ứng dụng để nhận các tính năng mới và vá lỗi bảo mật.
+
+### Phần mềm mã nguồn mở
+
+Đây là phần mềm mã nguồn mở, không dành cho thương mại. Có thể phục vụ mục đích giáo dục.
 
 Chúc bạn sử dụng ứng dụng một cách hiệu quả và đạt kết quả tốt nhất!
