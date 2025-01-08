@@ -32,6 +32,7 @@ namespace LotteryApp
         private AppWindow _appWindow;
         public int startNumber = 1;
         public int endNumber = 500;
+        private int randomNum = 0;
 
         public MainWindow()
         {
@@ -41,7 +42,6 @@ namespace LotteryApp
 
         private async void SpinButton_Click(object sender, RoutedEventArgs e)
         {
-            int randomNum = random.Next(startNumber, endNumber+1);
             string numString = randomNum.ToString().PadLeft(3, '0');
 
             // Check if any column is spinning and stop them in sequence
@@ -59,6 +59,7 @@ namespace LotteryApp
             {
                 cts3.Cancel();
                 await SlowDownColumn(Column3, "" + numString[2]);
+                randomNum = random.Next(startNumber, endNumber+1);
             }
             else
             {
