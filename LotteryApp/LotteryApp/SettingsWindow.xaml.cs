@@ -14,53 +14,8 @@ namespace LotteryApp
         {
             this.InitializeComponent();
             this.mainWindow = mainWnd;
-        }
-
-        //private void MarginSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        //{
-        //    if (TopMarginSlider != null && LeftMarginSlider != null)
-        //    {
-        //        int topMargin = (int)TopMarginSlider.Value;
-        //        int bottomMargin = 0;
-        //        int leftMargin = (int)LeftMarginSlider.Value;
-        //        int rightMargin = 0;
-
-        //        mainWindow.DispatcherQueue.TryEnqueue(() =>
-        //        {
-        //            mainWindow.UpdateBorderMargin(new Thickness(leftMargin, topMargin, rightMargin, bottomMargin));
-        //        });
-        //    }
-        //}
-
-        //private void SizeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        //{
-        //    if (WidthSlider != null && HeightSlider != null)
-        //    {
-        //        double Width = WidthSlider.Value;
-        //        double Height = HeightSlider.Value;
-
-        //        mainWindow.DispatcherQueue.TryEnqueue(() =>
-        //        {
-        //            mainWindow.UpdateBorderSize(Width, Height);
-        //        });
-        //    }
-        //}
-
-        private void TextColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
-        {
-            mainWindow.DispatcherQueue.TryEnqueue(() =>
-            {
-                mainWindow.UpdateTextColor(new SolidColorBrush(args.NewColor));
-            });
-        }
-
-        private void ApplyFontSize_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            int fontSize = int.Parse(fontSize_TxtBox.Text);
-            mainWindow.DispatcherQueue.TryEnqueue(() =>
-            {
-                mainWindow.ChangeFontSize(fontSize);
-            });
+            startNumber_TxtBox.Text = mainWnd.startNumber.ToString();
+            endNumber_TxtBox.Text = mainWnd.endNumber.ToString();
         }
 
         private void ApplyRange_Btn_Click(object sender, RoutedEventArgs e)

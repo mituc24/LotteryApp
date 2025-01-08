@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="LotteryApp">
-    <Grid>
+    <Grid KeyDown="Grid_KeyDown">
         <Grid.Background>
             <ImageBrush ImageSource="Assets/background.png"/>
         </Grid.Background>
@@ -19,7 +19,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="Toolbar" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Spacing="5" HorizontalAlignment="Left">
+        <StackPanel x:Name="Toolbar" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Spacing="5" HorizontalAlignment="Left" Visibility="Collapsed">
             <Button x:Name="StartButton" Click="SpinButton_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Start">
                 <FontIcon Glyph="&#xE7E8;" FontSize="15"/>
             </Button>
@@ -27,25 +27,24 @@
                 <FontIcon Glyph="&#xE713;" FontSize="15"/>
             </Button>
             <Button x:Name="FullScreenButton" Click="FullScreenButton_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Full Screen">
-                <FontIcon x:Name="FullScreenFontIcon" Glyph="&#xE8A7;"  FontSize="15"/>
+                <FontIcon x:Name="FullScreenFontIcon" Glyph="&#xEBC6;"  FontSize="15"/>
             </Button>
             <Button x:Name="Collapse" Click="Collapse_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Show less">
-                <FontIcon Glyph="&#xE938;" FontSize="15"/>
+                <FontIcon Glyph="&#xE76B;" FontSize="15"/>
             </Button>
         </StackPanel>
-        <Button x:Name="Expand" Grid.Column="0" Grid.Row="0" Click="Expand_Click" Background="Transparent" BorderThickness="0" Visibility="Collapsed" ToolTipService.ToolTip="Show more settings">
+        <Button x:Name="Expand" Grid.Column="0" Grid.Row="0" Click="Expand_Click" Background="Transparent" BorderThickness="0" Visibility="Visible" ToolTipService.ToolTip="Show more settings">
             <FontIcon Glyph="&#xE712;" FontSize="15"/>
         </Button>
-        <Border x:Name="AdjustableBorder" Grid.Column="0" Grid.Row="1" Width="400" Height="360" BorderBrush="Transparent" BorderThickness="2"
-                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" 
                     Grid.Column="1" Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
-                <TextBlock x:Name="Column1" Tag="TextColumn" Text="0" FontSize="60" Foreground="Black" FontWeight="Bold" Padding="5" Width="50"/>
-                <TextBlock x:Name="Column2" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Foreground="Black" Padding="5" Width="50"/>
-                <TextBlock x:Name="Column3" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Foreground="Black" Padding="5" Width="50"/>
-                <!--Add more TextBlock elements here -->
+                <Image x:Name="Column1" Source="Assets/Numbers/0.png" Width="120"/>
+                <Image x:Name="Column2" Source="Assets/Numbers/0.png" Width="120"/>
+                <Image x:Name="Column3" Source="Assets/Numbers/0.png" Width="120"/>
             </StackPanel>
+            <Border x:Name="AdjustableBorder" Grid.Column="0" Grid.Row="1" Width="400" Height="36" BorderBrush="Transparent" BorderThickness="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

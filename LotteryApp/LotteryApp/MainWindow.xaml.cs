@@ -18,6 +18,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace LotteryApp
 {
@@ -29,8 +30,9 @@ namespace LotteryApp
         private CancellationTokenSource cts3 = new CancellationTokenSource();
         
         private AppWindow _appWindow;
-        private int startNumber = 0;
-        private int endNumber = 500;
+        public int startNumber = 1;
+        public int endNumber = 500;
+        private int randomNum = 0;
 
         public MainWindow()
         {
@@ -40,7 +42,6 @@ namespace LotteryApp
 
         private async void SpinButton_Click(object sender, RoutedEventArgs e)
         {
-            int randomNum = random.Next(startNumber, endNumber+1);
             string numString = randomNum.ToString().PadLeft(3, '0');
 
             // Check if any column is spinning and stop them in sequence
@@ -58,6 +59,7 @@ namespace LotteryApp
             {
                 cts3.Cancel();
                 await SlowDownColumn(Column3, "" + numString[2]);
+                randomNum = random.Next(startNumber, endNumber+1);
             }
             else
             {
@@ -73,18 +75,18 @@ namespace LotteryApp
             }
         }
 
-        private async Task SpinColumn(TextBlock column, CancellationToken token)
+        private async Task SpinColumn(Image column, CancellationToken token)
         {
-            int interval = 20; // Initial interval for a smoother animation
+            int interval = 40; // Initial interval for a smoother animation
 
             while (!token.IsCancellationRequested)
             {
-                column.Text = random.Next(0, 10).ToString();
+                column.Source = new BitmapImage(new Uri("ms-appx:///Assets/Numbers/" + random.Next(0, 10) + ".png"));
                 await Task.Delay(interval);
             }
         }
 
-        private async Task SlowDownColumn(TextBlock column, string num)
+        private async Task SlowDownColumn(Image column, string num)
         {
             int duration = 2000; // Duration for the slowdown in milliseconds
             int elapsed = 0;
@@ -97,12 +99,12 @@ namespace LotteryApp
                 double sineValue = Math.Sin(progress * Math.PI / 2); // Sine function for smooth deceleration
                 int interval = (int)(startInterval + (endInterval - startInterval) * sineValue);
                 
-                column.Text = random.Next(0, 10).ToString();
+                column.Source = new BitmapImage(new Uri("ms-appx:///Assets/Numbers/" + random.Next(0, 10) + ".png"));
                 await Task.Delay(interval);
 
                 elapsed += interval;
             }
-            column.Text = num;
+            column.Source = new BitmapImage(new Uri("ms-appx:///Assets/Numbers/" + num + ".png"));
         }
 
         private void OpenSettings_Click(object sender, RoutedEventArgs e) {
@@ -133,20 +135,6 @@ namespace LotteryApp
             Toolbar.Visibility = Visibility.Visible;
         }
 
-        public void UpdateTextColor(SolidColorBrush colorBrush) 
-        { 
-            Column1.Foreground = colorBrush;
-            Column2.Foreground = colorBrush;
-            Column3.Foreground = colorBrush;
-        }
-
-        public void ChangeFontSize(int fontSize)
-        {
-            Column1.FontSize = fontSize;
-            Column2.FontSize = fontSize;
-            Column3.FontSize = fontSize;
-        }
-
         public void ChangeRange(int start, int end)
         {
             startNumber = start;
@@ -165,12 +153,24 @@ namespace LotteryApp
             if (_appWindow.Presenter.Kind == AppWindowPresenterKind.FullScreen)
             {
                 _appWindow.SetPresenter(AppWindowPresenterKind.Default);
-                FullScreenFontIcon.Glyph = "\uE8A7";
+                FullScreenFontIcon.Glyph = "\uEE49";
             }
             else
             {
                 _appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
                 FullScreenFontIcon.Glyph = "\uEE47";
+            }
+        }
+
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.F11)
+            {
+                FullScreenButton_Click(sender, e);
+            }
+            else if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                SpinButton_Click(sender, e);
             }
         }
     }
