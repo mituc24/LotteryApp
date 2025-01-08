@@ -30,8 +30,8 @@ namespace LotteryApp
         private CancellationTokenSource cts3 = new CancellationTokenSource();
         
         private AppWindow _appWindow;
-        private int startNumber = 1;
-        private int endNumber = 500;
+        public int startNumber = 1;
+        public int endNumber = 500;
 
         public MainWindow()
         {
@@ -152,7 +152,7 @@ namespace LotteryApp
             if (_appWindow.Presenter.Kind == AppWindowPresenterKind.FullScreen)
             {
                 _appWindow.SetPresenter(AppWindowPresenterKind.Default);
-                FullScreenFontIcon.Glyph = "\uE8A7";
+                FullScreenFontIcon.Glyph = "\uEE49";
             }
             else
             {

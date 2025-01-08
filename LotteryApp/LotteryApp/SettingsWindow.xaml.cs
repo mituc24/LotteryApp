@@ -14,6 +14,8 @@ namespace LotteryApp
         {
             this.InitializeComponent();
             this.mainWindow = mainWnd;
+            startNumber_TxtBox.Text = mainWnd.startNumber.ToString();
+            endNumber_TxtBox.Text = mainWnd.endNumber.ToString();
         }
 
         private void ApplyRange_Btn_Click(object sender, RoutedEventArgs e)
