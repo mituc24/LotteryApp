@@ -63,5 +63,8 @@
       <PublishProfile>Properties\PublishProfiles\win-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PInvoke.Windows.Core" Version="0.7.124" />
+  </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>

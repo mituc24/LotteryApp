@@ -19,11 +19,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml.Media.Imaging;
+using Windows.ApplicationModel;
 
 namespace LotteryApp
 {
     public sealed partial class MainWindow : Window
     {
+
+
         private Random random = new Random();
         private CancellationTokenSource cts1 = new CancellationTokenSource();
         private CancellationTokenSource cts2 = new CancellationTokenSource();
@@ -38,6 +41,10 @@ namespace LotteryApp
         {
             this.InitializeComponent();
             _appWindow = GetAppWindowForCurrentWindow();
+            IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+            appWindow.SetIcon("logo.ico");
         }
 
         private async void SpinButton_Click(object sender, RoutedEventArgs e)
