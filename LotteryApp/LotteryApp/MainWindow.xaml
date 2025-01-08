@@ -20,16 +20,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="Toolbar" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Spacing="5" HorizontalAlignment="Left">
-            <Button x:Name="StartButton" Click="SpinButton_Click" Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Start">
+            <Button x:Name="StartButton" Click="SpinButton_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Start">
                 <FontIcon Glyph="&#xE7E8;" FontSize="15"/>
             </Button>
-            <Button x:Name="SettingsButton" Click="OpenSettings_Click" Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Open Settings">
+            <Button x:Name="SettingsButton" Click="OpenSettings_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Open Settings">
                 <FontIcon Glyph="&#xE713;" FontSize="15"/>
             </Button>
-            <Button x:Name="FullScreenButton" Click="FullScreenButton_Click" Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Full Screen">
+            <Button x:Name="FullScreenButton" Click="FullScreenButton_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Full Screen">
                 <FontIcon x:Name="FullScreenFontIcon" Glyph="&#xE8A7;"  FontSize="15"/>
             </Button>
-            <Button x:Name="Collapse" Click="Collapse_Click" Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Show less">
+            <Button x:Name="Collapse" Click="Collapse_Click" Background="Transparent" Foreground="Black" BorderThickness="0" ToolTipService.ToolTip="Show less">
                 <FontIcon Glyph="&#xE938;" FontSize="15"/>
             </Button>
         </StackPanel>
@@ -41,9 +41,9 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" 
                     Grid.Column="1" Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
-                <TextBlock x:Name="Column1" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Padding="5" Width="50"/>
-                <TextBlock x:Name="Column2" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Padding="5" Width="50"/>
-                <TextBlock x:Name="Column3" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Padding="5" Width="50"/>
+                <TextBlock x:Name="Column1" Tag="TextColumn" Text="0" FontSize="60" Foreground="Black" FontWeight="Bold" Padding="5" Width="50"/>
+                <TextBlock x:Name="Column2" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Foreground="Black" Padding="5" Width="50"/>
+                <TextBlock x:Name="Column3" Tag="TextColumn" Text="0" FontSize="60" FontWeight="Bold" Foreground="Black" Padding="5" Width="50"/>
                 <!--Add more TextBlock elements here -->
             </StackPanel>
         </StackPanel>
