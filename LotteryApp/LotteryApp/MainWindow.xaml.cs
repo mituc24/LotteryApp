@@ -36,6 +36,7 @@ namespace LotteryApp
         public int startNumber = 1;
         public int endNumber = 500;
         private int randomNum = 0;
+        private List<int> usedNumber = new List<int>();
 
         public MainWindow()
         {
@@ -67,6 +68,15 @@ namespace LotteryApp
                 cts3.Cancel();
                 await SlowDownColumn(Column3, "" + numString[2]);
                 randomNum = random.Next(startNumber, endNumber+1);
+                while (usedNumber.Contains(randomNum))
+                {
+                    randomNum = random.Next(startNumber, endNumber + 1);
+                }
+                usedNumber.Add(randomNum);
+                if (usedNumber.Count == endNumber - startNumber + 1)
+                {
+                    usedNumber.Clear();
+                }
             }
             else
             {
